@@ -65,26 +65,25 @@ The following outputs are used to verify the controller's operation:
 
 1. Vivado Simulation Waveform
 
-"Vivado Simulation Waveform" (screenshots/simulation_waveform.png)
+"Vivado Simulation Waveform" (simulation_waveform.png)
 
 2. RTL Schematic
 
-"RTL Schematic" (screenshots/rtl_schematic.png)
+"RTL Schematic" (rtl_schematic.png)
 
 3. Console Output
 
-"Console Output" (screenshots/console_output.png)
+"Console Output" (console_output.png)
 
 4. Power Analysis
 
-"Power Analysis" (screenshots/power_analysis.png)
+"Power Analysis" (power_analysis.png)
 
 ## 📁 Project Structure
 
 Traffic-Light-Controller/
 ├── traffic_light_controller.v
 ├── tb_traffic_light_controller.v
-├── screenshots/
 │   ├── simulation_waveform.png
 │   ├── rtl_schematic.png
 │   ├── console_output.png
