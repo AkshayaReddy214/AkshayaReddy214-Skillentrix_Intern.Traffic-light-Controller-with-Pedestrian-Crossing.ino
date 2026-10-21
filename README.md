@@ -108,5 +108,6 @@ The Traffic Light Controller with Pedestrian Crossing was designed using Verilog
 This project provides practical experience in digital system design, FSM implementation, Verilog coding, simulation, and RTL analysis.
 
 👨‍💻 Author
+
 Akshaya Reddy
 B.Tech ECE Student
