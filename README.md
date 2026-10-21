@@ -82,12 +82,19 @@ The following outputs are used to verify the controller's operation:
 ## 📁 Project Structure
 
 Traffic-Light-Controller/
+
 ├── traffic_light_controller.v
+
 ├── tb_traffic_light_controller.v
+
 │   ├── simulation_waveform.png
+
 │   ├── rtl_schematic.png
+
 │   ├── console_output.png
+
 │   └── power_analysis.png
+
 └── README.md
 
 ## ▶️ How to Run the Project
