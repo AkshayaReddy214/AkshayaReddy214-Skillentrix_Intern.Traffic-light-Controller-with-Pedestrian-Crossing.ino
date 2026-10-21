@@ -1,0 +1,93 @@
+`timescale 1ns / 1ps
+module traffic_light_controller(
+    input clk,
+    input reset,
+    input pedestrian,
+    output reg [2:0] highway,
+    output reg [2:0] side_road,
+    output reg ped_walk
+);
+//--------------------------------------
+// Light Encoding
+//--------------------------------------
+parameter RED = 3'b100;
+parameter YELLOW = 3'b010;
+parameter GREEN = 3'b001;
+//--------------------------------------
+// FSM States
+//--------------------------------------
+parameter HW_GREEN = 2'd0;
+parameter HW_YELLOW = 2'd1;
+parameter SR_GREEN = 2'd2;
+parameter PED_STATE = 2'd3;
+reg [1:0] state;
+reg [3:0] timer;
+//--------------------------------------
+// FSM
+//--------------------------------------
+always @(posedge clk or posedge reset)
+begin
+    if(reset)
+    begin
+        state <= HW_GREEN;
+        timer <= 0;
+        highway <= GREEN;
+        side_road <= RED;
+        ped_walk <= 0;
+    end
+    else
+    begin
+        timer <= timer + 1;
+        case(state)
+        HW_GREEN:
+        begin
+            highway <= GREEN;
+            side_road <= RED;
+            ped_walk <= 0;
+            if(timer == 5)
+            begin
+                timer <= 0;
+                state <= HW_YELLOW;
+            end
+        end
+ HW_YELLOW:
+ begin
+     highway <= YELLOW;
+     side_road <= RED;
+     ped_walk <= 0;
+     if(timer == 2)
+     begin
+         timer <= 0;
+         if(pedestrian)
+             state <= PED_STATE;
+         else
+            state <= SR_GREEN;
+     end
+ end
+ SR_GREEN:
+ begin
+     highway <= RED;
+     side_road <= GREEN;
+     ped_walk <= 0;
+     if(timer == 5)
+     begin
+         timer <= 0;
+         state <= HW_GREEN;
+     end
+ end
+PED_STATE:
+begin
+    highway <= RED;
+    side_road <= RED;
+    ped_walk <= 1;
+    if(timer == 4)
+    begin
+        timer <= 0;
+        ped_walk <= 0;
+        state <= SR_GREEN;
+    end
+end
+ endcase
+end
+end
+endmodule

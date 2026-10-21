@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+module tb_traffic_light_controller;
+reg clk;
+reg reset;
+reg pedestrian;
+wire [2:0] highway;
+wire [2:0] side_road;
+wire ped_walk;
+// DUT
+traffic_light_controller DUT
+(
+    .clk(clk),
+    .reset(reset),
+    .pedestrian(pedestrian),
+    .highway(highway),
+    .side_road(side_road),
+    .ped_walk(ped_walk)
+);
+// Clock
+always #5 clk = ~clk;
+// Test
+initial
+begin
+    clk = 0;
+    reset = 1;
+    pedestrian = 0;
+    #20;
+    reset = 0;
+    #80;
+    pedestrian = 1;
+    #10;
+    pedestrian = 0;
+    #150;
+   $finish;
+end
+// Monitor
+initial
+begin
+$monitor("Time=%0t | Ped=%b | Highway=%b | Side=%b | Walk=%b",
+          $time,
+          pedestrian,
+          highway,
+          side_road,
+          ped_walk);
+end
+endmodule
