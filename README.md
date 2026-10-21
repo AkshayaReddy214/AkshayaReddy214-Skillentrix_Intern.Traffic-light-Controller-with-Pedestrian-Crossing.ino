@@ -63,19 +63,19 @@ The following outputs are used to verify the controller's operation:
 
 ## 📸 Project Results
 
-1. Vivado Simulation Waveform
+### 1. Vivado Simulation Waveform
 
 "Vivado Simulation Waveform" (simulation_waveform.png)
 
-2. RTL Schematic
+### 2. RTL Schematic
 
 "RTL Schematic" (rtl_schematic.png)
 
-3. Console Output
+### 3. Console Output
 
 "Console Output" (console_output.png)
 
-4. Power Analysis
+### 4. Power Analysis
 
 "Power Analysis" (power_analysis.png)
 
